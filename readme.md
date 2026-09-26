@@ -826,7 +826,7 @@ Secure credential handling
 Input validation
 Authorization
 Auditability
-User-controlled deletion
+User controlled deletion
 ```
 
 Never commit:
@@ -1012,7 +1012,7 @@ Play Store release preparation will include:
 -   App signing
 -   Privacy policy
 -   Data Safety information
--   Health-related declarations where applicable
+-   Health related declarations where applicable
 -   Location permission disclosures
 -   Store screenshots
 -   App icon
