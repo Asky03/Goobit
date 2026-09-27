@@ -769,12 +769,12 @@ information.
 
 The application should distinguish between:
 
-``` text
+--text
 GoBit phone tracking
 Health Connect
 Google Health
 Fitbit-related data
-```
+
 
 Every imported record should have source information.
 
