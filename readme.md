@@ -272,7 +272,7 @@ Planned integrations include:
 
 -   Android Health Connect
 -   Google Health API
--   Fitbit-related health data through the current Google health-data
+-   Fitbit related health data through the current Google health-data
     architecture
 
 External integrations are optional. GoBit should continue functioning as
