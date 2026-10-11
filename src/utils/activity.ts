@@ -1,4 +1,12 @@
-import { Activity, ActivitySummary } from '../types/activity';
+
+import type { Activity } from "../types/activity";
+
+export type ActivitySummary = {
+  totalActivities: number;
+  totalDurationMinutes: number;
+  totalCalories: number;
+  totalDistanceKm: number;
+};
 
 export function calculateActivitySummary(
   activities: Activity[],
@@ -6,19 +14,17 @@ export function calculateActivitySummary(
   return activities.reduce<ActivitySummary>(
     (summary, activity) => ({
       totalActivities: summary.totalActivities + 1,
-      totalDurationSeconds:
-        summary.totalDurationSeconds + activity.durationSeconds,
-      totalDistanceMeters:
-        summary.totalDistanceMeters + activity.distanceMeters,
-      totalSteps: summary.totalSteps + activity.steps,
+      totalDurationMinutes:
+        summary.totalDurationMinutes + activity.duration,
       totalCalories: summary.totalCalories + activity.calories,
+      totalDistanceKm:
+        summary.totalDistanceKm + (activity.distanceKm ?? 0),
     }),
     {
       totalActivities: 0,
-      totalDurationSeconds: 0,
-      totalDistanceMeters: 0,
-      totalSteps: 0,
+      totalDurationMinutes: 0,
       totalCalories: 0,
+      totalDistanceKm: 0,
     },
   );
 }
