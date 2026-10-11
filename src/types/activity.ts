@@ -1,35 +1,19 @@
-export type ActivityType =
-  | 'walking'
-  | 'running'
-  | 'cycling'
-  | 'workout';
 
-export type ActivitySource =
-  | 'gobit'
-  | 'health_connect'
-  | 'google_health'
-  | 'fitbit';
+export const ACTIVITY_TYPES = [
+  "Running",
+  "Walking",
+  "Cycling",
+  "Gym",
+] as const;
 
-export interface Activity {
+export type ActivityType = (typeof ACTIVITY_TYPES)[number];
+
+export type Activity = {
   id: string;
+  name: string;
   type: ActivityType;
-  title: string;
-
-  startedAt: string;
-  endedAt: string;
-
-  durationSeconds: number;
-  distanceMeters: number;
-  steps: number;
+  duration: number;
   calories: number;
-
-  source: ActivitySource;
-}
-
-export interface ActivitySummary {
-  totalActivities: number;
-  totalDurationSeconds: number;
-  totalDistanceMeters: number;
-  totalSteps: number;
-  totalCalories: number;
-}
+  date: string;
+  distanceKm?: number;
+};
