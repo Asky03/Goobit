@@ -1,0 +1,22 @@
+
+export const colors = {
+  background: "#F5F6F8",
+  surface: "#FFFFFF",
+  primary: "#17191D",
+  text: "#191B20",
+  secondary: "#626873",
+  muted: "#858B96",
+  border: "#E5E7EB",
+  accent: "#5267E8",
+  successBackground: "#E5F6EB",
+  successText: "#176B3A",
+  danger: "#B42318",
+  runningBackground: "#E8ECFF",
+  runningText: "#3547A5",
+  walkingBackground: "#E2F5E9",
+  walkingText: "#216C42",
+  cyclingBackground: "#FFF0D9",
+  cyclingText: "#8A5000",
+  gymBackground: "#F2E6FF",
+  gymText: "#6C3298",
+};
