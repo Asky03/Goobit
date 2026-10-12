@@ -11,6 +11,8 @@ Set-Location
 installing:
 npm install --save-dev @expo/ngrok@^4.1.0
 
+npx expo start 
+
 verify:
 npm list @expo/ngrok
 
