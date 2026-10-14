@@ -1,3 +1,4 @@
+
 {
   "expo": {
     "name": "GoBit",
@@ -20,6 +21,20 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "GoBit uses your location to measure workout distance and record routes."
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "GoBit uses motion sensors to measure your steps during workouts."
+        }
+      ]
+    ]
   }
 }
