@@ -14,7 +14,6 @@ export function calculateDistanceMeters(
   const latitudeDifference = toRadians(
     end.latitude - start.latitude,
   );
-
   const longitudeDifference = toRadians(
     end.longitude - start.longitude,
   );
@@ -68,4 +67,15 @@ export function calculatePaceMinutesPerKm(
   const seconds = totalSeconds % 60;
 
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+
+export function calculateSpeedKmh(
+  distanceMeters: number,
+  elapsedSeconds: number,
+): number {
+  if (distanceMeters <= 0 || elapsedSeconds <= 0) {
+    return 0;
+  }
+
+  return (distanceMeters / 1000) / (elapsedSeconds / 3600);
 }
