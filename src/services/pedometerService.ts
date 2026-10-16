@@ -11,17 +11,7 @@ export async function startPedometerUpdates(
   const available = await isPedometerAvailable();
 
   if (!available) {
-    throw new Error(
-      "Step counting is not available on this device.",
-    );
-  }
-
-  const permission = await Pedometer.requestPermissionsAsync();
-
-  if (!permission.granted) {
-    throw new Error(
-      "Motion permission is required to count steps.",
-    );
+    throw new Error("Step counting is not available on this device.");
   }
 
   return Pedometer.watchStepCount((result) => {
