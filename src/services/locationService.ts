@@ -9,12 +9,11 @@ export type WorkoutLocation = {
 };
 
 export async function requestLocationPermission(): Promise<void> {
-  const permission =
-    await Location.requestForegroundPermissionsAsync();
+  const result = await Location.requestForegroundPermissionsAsync();
 
-  if (!permission.granted) {
+  if (!result.granted) {
     throw new Error(
-      "Location permission is required to track workout distance.",
+      "Location permission was denied. Enable it in your phone settings to track distance.",
     );
   }
 }
