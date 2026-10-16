@@ -101,7 +101,7 @@ export default function App() {
         );
 
       case "Track":
-        return <TrackScreen />;
+        return <TrackScreen onSaveActivity={saveActivity} />;
 
       case "History":
         return (
