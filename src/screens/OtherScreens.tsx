@@ -114,7 +114,7 @@ export function TrackScreen({ onSaveActivity }: TrackProps) {
     return () => {
       mountedRef.current = false;
       locationSubscriptionRef.current?.remove();
-      pedometerSubscriptionRef.current?.remove();
+      pedometerSubscriptionRef.current?.subscription.remove();
       locationSubscriptionRef.current = null;
       pedometerSubscriptionRef.current = null;
     };
@@ -138,12 +138,16 @@ export function TrackScreen({ onSaveActivity }: TrackProps) {
     return () => clearInterval(timer);
   }, [status]);
 
-  const releaseSubscriptions = () => {
-    locationSubscriptionRef.current?.remove();
-    pedometerSubscriptionRef.current?.remove();
-    locationSubscriptionRef.current = null;
-    pedometerSubscriptionRef.current = null;
-  };
+  
+const releaseSubscriptions = () => {
+  locationSubscriptionRef.current?.remove();
+
+  pedometerSubscriptionRef.current?.subscription.remove();
+
+  locationSubscriptionRef.current = null;
+  pedometerSubscriptionRef.current = null;
+};
+
 
   const handleLocation = (location: WorkoutLocation) => {
     if (statusRef.current !== "running") {
@@ -237,11 +241,13 @@ export function TrackScreen({ onSaveActivity }: TrackProps) {
           },
         );
 
-        if (!mountedRef.current) {
-          pedometerSubscription.remove();
-          locationSubscription.remove();
-          return;
-        }
+        
+if (!mountedRef.current) {
+  pedometerSubscription.subscription.remove();
+  locationSubscription.remove();
+  return;
+}
+
 
         pedometerSubscriptionRef.current = pedometerSubscription;
         setStepCounterAvailable(true);
