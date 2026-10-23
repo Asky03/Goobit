@@ -302,7 +302,7 @@ The application will target:
 -   Accessible charts
 -   Accessible workout controls
 -   Meaningful labels
--   No color-only communication
+-   No color -- only communication
 
 ------------------------------------------------------------------------
 
