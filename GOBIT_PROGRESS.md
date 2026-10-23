@@ -160,7 +160,7 @@ git push
 - [ ] Add weekly/monthly summaries.
 - [ ] Handle empty or invalid stored data safely.
 - [ ] Test closing and reopening the app.
-- [ ] Verify existing Day 1 and Day 2 features remain functional.
+- [ ] Verify existing Day 1 and 2 features remain functional.
 - [ ] Run TypeScript, lint, Expo dependency check and Expo Doctor.
 - [ ] Commit, push and verify GitHub Actions.
 
