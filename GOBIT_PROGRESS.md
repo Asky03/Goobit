@@ -3,7 +3,6 @@
 **Project:** GoBit Fitness Tracker  
 **Stack:** React Native, Expo SDK 57, TypeScript  
 **Environment:** Windows + PowerShell; Android phone for testing  
-**Project root:** `D:\Project 26X\GoBit`  
 **Architecture:** `App.tsx` entry point; screens and services under `src/`  
 **Current milestone:** Day 2 — Foreground GPS and workout tracking  
 **Next action:** Run TypeScript and lint checks after the latest timer fix.
