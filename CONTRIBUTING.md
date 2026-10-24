@@ -28,7 +28,6 @@ Examples:
 - fix/navigation
 - fix/activity-card
 - chore/dependency-update
-- docs/update-readme
 
 ## Before Opening a Pull Request
 
