@@ -27,7 +27,6 @@ Examples:
 - feature/dashboard
 - fix/navigation
 - fix/activity-card
-- chore/dependency-update
 
 ## Before Opening a Pull Request
 
