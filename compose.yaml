@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:16
+    container_name: gobit-lab-db
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: gobit
+      POSTGRES_USER: gobit_dev
+      POSTGRES_PASSWORD: local_dev_only_change_me
+
+    ports:
+      - "127.0.0.1:5432:5432"
+
+    volumes:
+      - gobit_lab_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gobit_dev -d gobit"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  gobit_lab_data:
