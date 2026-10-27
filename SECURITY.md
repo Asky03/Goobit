@@ -46,4 +46,3 @@ Features involving sensitive information should follow the project's security an
 ## Dependency Security
 
 Dependencies should be reviewed before being added or upgraded.
-With the latets 
