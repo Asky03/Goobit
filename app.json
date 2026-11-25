@@ -1,4 +1,3 @@
-
 {
   "expo": {
     "name": "GoBit",
@@ -34,7 +33,8 @@
         {
           "motionPermission": "GoBit uses motion sensors to measure your steps during workouts."
         }
-      ]
+      ],
+      "expo-status-bar"
     ]
   }
 }
