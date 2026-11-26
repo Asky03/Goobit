@@ -102,3 +102,34 @@ export async function clearSavedActivities(): Promise<void> {
   await writeQueue;
   await AsyncStorage.removeItem(STORAGE_KEY);
 }
+
+const SERVER_CACHE_KEY =
+  "@gobit/server-activities/v1";
+
+export async function loadServerCache():
+  Promise<Activity[]> {
+  const raw = await AsyncStorage.getItem(
+    SERVER_CACHE_KEY,
+  );
+
+  return raw === null
+    ? []
+    : parseActivities(raw);
+}
+
+export function saveServerCache(
+  activities: Activity[],
+): Promise<void> {
+  const snapshot = JSON.stringify(activities);
+
+  const write = writeQueue.then(() =>
+    AsyncStorage.setItem(
+      SERVER_CACHE_KEY,
+      snapshot,
+    ),
+  );
+
+  writeQueue = write.catch(() => undefined);
+
+  return write;
+}
