@@ -22,7 +22,6 @@ concurrency:
 jobs:
   quality-check:
     name: Code Quality & Project Check
-
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -35,6 +34,17 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Verify frontend source files
+        run: |
+          test -f App.tsx
+          test -f index.ts
+          test -f package.json
+          test -f package-lock.json
+          test -f tsconfig.json
+          test -f src/services/activityApi.ts
+          test -f src/services/activityStorage.ts
 
       - name: Install dependencies
         run: npm ci
@@ -53,3 +63,50 @@ jobs:
 
       - name: Expo configuration check
         run: npx expo config --type public
+
+  backend-check:
+    name: Backend Quality & Build Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    defaults:
+      run:
+        working-directory: server
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+
+      - name: Verify backend source files
+        run: |
+          test -f package.json
+          test -f package-lock.json
+          test -f tsconfig.json
+          test -f src/index.ts
+          test -f src/config/db.ts
+          test -f src/controllers/activity.controller.ts
+          test -f src/repositories/activity.repository.ts
+          test -f src/routes/activity.routes.ts
+          test -f src/scripts/migrate.ts
+          test -f src/types/activity.ts
+          test -f src/validation/activity.validation.ts
+          test -f migrations/001_create_activities.sql
+
+      - name: Install backend dependencies
+        run: npm ci
+
+      - name: Backend TypeScript check
+        run: npm run typecheck
+
+      - name: Backend production build
+        run: npm run build
+
+      - name: Verify production entry point
+        run: test -f dist/index.js
