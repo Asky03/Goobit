@@ -1,9 +1,9 @@
-
 import React, { useEffect, useRef, useState } from "react";
 
 import {
   ActivityIndicator,
   Alert,
+  Platform,
   Pressable,
   SafeAreaView,
   StatusBar,
@@ -509,6 +509,7 @@ export default function App() {
           busy: isRefreshing,
         }}
         disabled={isRefreshing}
+        hitSlop={8}
         onPress={() => void retryLoadActivities()}
         style={({ pressed }) => [
           styles.connectionBanner,
@@ -574,6 +575,9 @@ const styles = StyleSheet.create({
   app: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingTop: Platform.OS === "android"
+      ? (StatusBar.currentHeight ?? 0) + 8
+      : 0,
   },
 
   screen: {
@@ -623,10 +627,13 @@ const styles = StyleSheet.create({
   },
 
   connectionBanner: {
-    minHeight: 44,
+    minHeight: 48,
     justifyContent: "center",
-    paddingVertical: 9,
+    paddingVertical: 10,
     paddingHorizontal: 12,
+    marginHorizontal: 12,
+    marginBottom: 8,
+    borderRadius: 10,
   },
 
   connectionContent: {
